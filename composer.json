@@ -1,0 +1,24 @@
+{
+    "name": "bashph/ph-msisdn",
+    "description": "Simple Static PHP Validation for Philippine MSISDN",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yan Santos",
+            "email": "bybashph@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "BashPH\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^5.6 || ^7.0"
+    },
+    "require-dev": {
+        "php": "^7.3",
+        "phpunit/phpunit": "^9"
+    }
+}
