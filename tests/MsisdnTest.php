@@ -73,7 +73,7 @@ final class MsisdnTest extends TestCase
     public function testGetPrefix()
     {
         for ($i=0; $i<count($this->mobile); $i++) {
-            $this->assertEquals($this->prefix[$i], BashPH\Msisdn::getPrefix($this->mobile[$i]));
+            $this->assertEquals($this->prefix[$i], BashPH\Msisdn::getPrefix($this->mobile[$i])['prefix']);
         }
     }
 
@@ -83,7 +83,7 @@ final class MsisdnTest extends TestCase
     public function testErrorGetPrefix()
     {
         for ($i=0; $i<count($this->errorMobile); $i++) {
-            $this->assertArrayHasKey("error", BashPH\Msisdn::getPrefix($this->errorMobile[$i]));
+            $this->assertEquals(false, BashPH\Msisdn::getPrefix($this->errorMobile[$i])['valid']);
         }
     }
 
@@ -120,6 +120,7 @@ final class MsisdnTest extends TestCase
         $this->assertEquals("6391737654321", BashPH\Msisdn::sanitize('+63-9173-765-4321'));
         $this->assertEquals("6391737654321", BashPH\Msisdn::sanitize('+63 9173 765 4321'));
         $this->assertEquals("6391737654321", BashPH\Msisdn::sanitize('+63 A9173 B765 C4321 X'));
+        $this->assertEquals("", BashPH\Msisdn::sanitize('+abcdefghi'));
     }
 
     /**
@@ -129,6 +130,7 @@ final class MsisdnTest extends TestCase
     {
         $this->assertEquals("91737654321", BashPH\Msisdn::removeLeadingZero('091737654321'));
         $this->assertEquals("9177654321", BashPH\Msisdn::removeLeadingZero('09177654321'));
+        $this->assertEquals("", BashPH\Msisdn::removeLeadingZero(''));
     }
 
     /**
@@ -139,6 +141,7 @@ final class MsisdnTest extends TestCase
         $this->assertEquals("91737654321", BashPH\Msisdn::removeCountryCode('+6391737654321'));
         $this->assertEquals("9177654321", BashPH\Msisdn::removeCountryCode('+639177654321'));
         $this->assertEquals("9177654321", BashPH\Msisdn::removeCountryCode('639177654321'));
+        $this->assertEquals("", BashPH\Msisdn::removeCountryCode(''));
     }
 
     /**
@@ -185,6 +188,7 @@ final class MsisdnTest extends TestCase
         $this->assertEquals('91737654321', BashPH\Msisdn::clean('+63-9173-765-4321'));
         $this->assertEquals('91737654321', BashPH\Msisdn::clean('+63 9173 765 4321'));
         $this->assertEquals('91737654321', BashPH\Msisdn::clean('+63 A9173 B765 C4321'));
+        $this->assertEquals('', BashPH\Msisdn::clean('abcdefghijklmnop'));
     }
 
     /**

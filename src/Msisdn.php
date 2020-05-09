@@ -9,6 +9,7 @@
  * @link     https://github.com/BashPH/ph-msisdn
  */
 
+declare(strict_types=1);
 
 namespace BashPH;
 
@@ -45,7 +46,7 @@ class Msisdn
      *
      * @return array
      */
-    public static function listPrefix($network = false)
+    public static function listPrefix($network = false) : array
     {
         return Msisdn::loadPrefix($network);
     }
@@ -58,7 +59,7 @@ class Msisdn
      *
      * @return array
      */
-    public static function getPrefix($msisdn)
+    public static function getPrefix($msisdn) : array
     {
 
         $msisdn = Msisdn::clean($msisdn);
@@ -73,8 +74,10 @@ class Msisdn
                 'error' => 'Mobile number length should be 10 to 11 excluding prefix'
             ];
         }
-        
-        return $prefix;
+        return [
+            'valid' => true,
+            'prefix' => $prefix
+        ];
     }
 
     /**
@@ -87,7 +90,7 @@ class Msisdn
      *
      * @return string
      */
-    public static function format($msisdn, $countryCode = false, $separator = '')
+    public static function format($msisdn, $countryCode = false, $separator = '') : string
     {
         $msisdn = Msisdn::clean($msisdn);
 
@@ -112,7 +115,7 @@ class Msisdn
      *
      * @return string
      */
-    public static function sanitize($msisdn)
+    public static function sanitize($msisdn) : string
     {
         return preg_replace('/[^0-9]/', '', $msisdn);
     }
@@ -125,10 +128,11 @@ class Msisdn
      *
      * @return string
      */
-    public static function removeLeadingZero($msisdn)
+    public static function removeLeadingZero($msisdn) : string
     {
         $msisdn = Msisdn::sanitize($msisdn);
-        return substr($msisdn, 1, strlen($msisdn));
+        $msisdn = substr($msisdn, 1, strlen($msisdn));
+        return ($msisdn) ? $msisdn : '';
     }
 
     /**
@@ -139,10 +143,11 @@ class Msisdn
      *
      * @return string
      */
-    public static function removeCountryCode($msisdn)
+    public static function removeCountryCode($msisdn) : string
     {
         $msisdn = Msisdn::sanitize($msisdn);
-        return substr($msisdn, 2, strlen($msisdn));
+        $msisdn = substr($msisdn, 2, strlen($msisdn));
+        return ($msisdn) ? $msisdn : '';
     }
     
     /**
@@ -153,7 +158,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isNull($msisdn)
+    public static function isNull($msisdn) : bool
     {
         return is_null($msisdn);
     }
@@ -166,7 +171,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isEmpty($msisdn)
+    public static function isEmpty($msisdn) : bool
     {
         return empty($msisdn);
     }
@@ -179,7 +184,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isNumber($msisdn)
+    public static function isNumber($msisdn) : bool
     {
         return is_numeric($msisdn);
     }
@@ -192,7 +197,7 @@ class Msisdn
      *
      * @return string
      */
-    public static function clean($msisdn)
+    public static function clean($msisdn) : string
     {
 
         $msisdn = Msisdn::sanitize($msisdn);
@@ -219,7 +224,7 @@ class Msisdn
      *
      * @return array
      */
-    public static function validate($msisdn, $network = false, $separator = '')
+    public static function validate($msisdn, $network = false, $separator = '') : array
     {
         
         if (true === Msisdn::isNull($msisdn)) {
@@ -302,7 +307,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isValid($msisdn = null)
+    public static function isValid($msisdn = null) : bool
     {
         return Msisdn::validate($msisdn, 'all')['valid'];
     }
@@ -315,7 +320,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isValidGlobe($msisdn = null)
+    public static function isValidGlobe($msisdn = null) : bool
     {
         return Msisdn::validate($msisdn, 'globe')['valid'];
     }
@@ -328,7 +333,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isValidTM($msisdn = null)
+    public static function isValidTM($msisdn = null) : bool
     {
         return Msisdn::validate($msisdn, 'tm')['valid'];
     }
@@ -341,7 +346,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isValidSmart($msisdn = null)
+    public static function isValidSmart($msisdn = null) : bool
     {
         return Msisdn::validate($msisdn, 'smart')['valid'];
     }
@@ -354,7 +359,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isValidSun($msisdn = null)
+    public static function isValidSun($msisdn = null) : bool
     {
         return Msisdn::validate($msisdn, 'sun')['valid'];
     }
@@ -367,7 +372,7 @@ class Msisdn
      *
      * @return bool
      */
-    public static function isValidTnT($msisdn = null)
+    public static function isValidTnT($msisdn = null) : bool
     {
         return Msisdn::validate($msisdn, 'tnt')['valid'];
     }

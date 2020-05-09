@@ -272,7 +272,7 @@ Msisdn::clean($number) // returns string
 ```php
 // Get the prefix of mobile number
 // This function use Msisdn::clean($number)
-Msisdn::getPrefix($number) // returns string
+Msisdn::getPrefix($number) // returns array
 ```
 
 #### format()
