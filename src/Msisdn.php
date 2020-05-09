@@ -256,7 +256,7 @@ class Msisdn
         } else {
             return [
                 'valid' => false,
-                'error' => 'Mobile number length should be 10 to 11 excluding prefix'
+                'error' => 'Mobile number length should be 10 to 11 including carrier prefix'
             ];
         }
 

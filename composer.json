@@ -1,6 +1,6 @@
 {
     "name": "bashph/ph-msisdn",
-    "description": "Simple Static PHP Validation for Philippine MSISDN",
+    "description": "Simple static PHP validation for Philippine mobile numbers.",
     "type": "library",
     "license": "MIT",
     "authors": [
