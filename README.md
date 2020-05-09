@@ -1,5 +1,10 @@
 # PH Msisdn
 
+[![Build Status](https://travis-ci.com/BashPH/ph-msisdn.svg?branch=1.x)](https://travis-ci.com/BashPH/ph-msisdn) 
+[![Packagist Version](https://img.shields.io/packagist/v/bashph/ph-msisdn?label=stable)](https://packagist.org/packages/bashph/ph-msisdn) 
+[![GitHub](https://img.shields.io/github/license/bashph/ph-msisdn)](https://github.com/BashPH/ph-msisdn/blob/1.x/LICENSE) 
+
+
 Simple static PHP validation for Philippine mobile numbers.
 
 ### Features
@@ -251,7 +256,7 @@ Msisdn::isEmpty($number) // returns bool (true or false)
 #### isNumber()
 ```php
 // Check if mobile number is numeric.
-Msisdn::isNull($number) // returns bool (true or false)
+Msisdn::isNumber($number) // returns bool (true or false)
 ```
 
 #### clean()
