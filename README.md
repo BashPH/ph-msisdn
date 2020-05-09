@@ -235,7 +235,7 @@ Msisdn::removeLeadingZero($number) // returns string
 // Remove country code from mobile number.
 // This function use Msisdn::sanitize($number)
 Msisdn::removeCountryCode($number) // returns string
-
+```
 #### isNull()
 ```php
 // Check if mobile number is null.
@@ -245,7 +245,7 @@ Msisdn::isNull($number) // returns bool (true or false)
 #### isEmpty()
 ```php
 // Check if mobile number is empty.
-Msisdn::isNull($number) // returns bool (true or false)
+Msisdn::isEmpty($number) // returns bool (true or false)
 ```
 
 #### isNumber()
