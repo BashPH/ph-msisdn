@@ -1,8 +1,9 @@
 # PH Msisdn
 
 [![Build Status](https://travis-ci.com/BashPH/ph-msisdn.svg?branch=1.x)](https://travis-ci.com/BashPH/ph-msisdn) 
-[![Packagist Version](https://img.shields.io/packagist/v/bashph/ph-msisdn?label=stable)](https://packagist.org/packages/bashph/ph-msisdn) 
+[![Packagist Version](https://img.shields.io/packagist/v/bashph/ph-msisdn)](https://packagist.org/packages/bashph/ph-msisdn) 
 [![GitHub](https://img.shields.io/github/license/bashph/ph-msisdn)](https://github.com/BashPH/ph-msisdn/blob/1.x/LICENSE) 
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-blue)](https://packagist.org/packages/bashph/ph-msisdn) 
 
 
 Simple static PHP validation for Philippine mobile numbers.
@@ -178,6 +179,21 @@ array:2 [
 
 Msisdn::validate('091737654321','globe') // returns array
 
+// response
+array:5 [
+  "valid" => true
+  "prefix" => "9173"
+  "carrier" => array:3 [
+    "network" => "Globe"
+    "other" => null
+    "type" => "Postpaid"
+  ]
+  "format" => array:2 [
+    0 => "+6391737654321"
+    1 => "091737654321"
+  ]
+  "error" => null
+]
 
 // validate and add a separator for mobile number format.
 // add false in second parameter if you don't need to validate the carrier.
