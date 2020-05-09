@@ -44,7 +44,6 @@ return [
     928 => ['network' => 'Smart', 'other' => null, 'type' => null],
     929 => ['network' => 'Smart', 'other' => null, 'type' => null],
     939 => ['network' => 'Smart', 'other' => null, 'type' => null],
-    946 => ['network' => 'Smart', 'other' => null, 'type' => null],
     947 => ['network' => 'Smart', 'other' => null, 'type' => null],
     949 => ['network' => 'Smart', 'other' => null, 'type' => null],
     998 => ['network' => 'Smart', 'other' => null, 'type' => null],
