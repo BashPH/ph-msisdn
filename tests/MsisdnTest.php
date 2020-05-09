@@ -10,6 +10,7 @@ final class MsisdnTest extends TestCase
         'smart',
         'sun',
         'tnt',
+        ''
     ];
 
     protected $errorNetworks = [
@@ -19,7 +20,6 @@ final class MsisdnTest extends TestCase
         'smartx',
         'sunx',
         'tntx',
-        '',
     ];
     
     protected $mobile = [
@@ -142,17 +142,6 @@ final class MsisdnTest extends TestCase
         $this->assertSame("9177654321", BashPH\Msisdn::removeCountryCode('+639177654321'));
         $this->assertSame("9177654321", BashPH\Msisdn::removeCountryCode('639177654321'));
         $this->assertSame("", BashPH\Msisdn::removeCountryCode(''));
-    }
-
-    /**
-     * Test for checking if msisdn is null.
-     */
-    public function testIsNull()
-    {
-        $this->assertTrue(BashPH\Msisdn::isNull(null));
-        $this->assertFalse(BashPH\Msisdn::isNull(''));
-        $this->assertFalse(BashPH\Msisdn::isNull(true));
-        $this->assertFalse(BashPH\Msisdn::isNull('+6391737654321'));
     }
 
     /**

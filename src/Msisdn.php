@@ -24,9 +24,9 @@ class Msisdn
      *
      * @return array
      */
-    protected static function loadPrefix($network = false)
+    protected static function loadPrefix($network)
     {
-        $network = (false === $network) ? 'all' : strtolower($network);
+        $network = ('' === $network) ? 'all' : strtolower($network);
         $networks = array('all','globe','tm','smart','sun','tnt');
         if (!in_array(strtolower($network), $networks)) {
             return [
@@ -46,7 +46,7 @@ class Msisdn
      *
      * @return array
      */
-    public static function listPrefix($network = false) : array
+    public static function listPrefix($network) : array
     {
         return Msisdn::loadPrefix($network);
     }
@@ -151,19 +151,6 @@ class Msisdn
     }
     
     /**
-     * Is Null
-     * Check if msisdn is null.
-     *
-     * @param string $msisdn Mobile Number to check if null.
-     *
-     * @return bool
-     */
-    public static function isNull($msisdn) : bool
-    {
-        return is_null($msisdn);
-    }
-    
-    /**
      * Is Empty
      * Check if msisdn is empty.
      *
@@ -219,20 +206,13 @@ class Msisdn
      * if valid from certain network.
      *
      * @param string $msisdn    Mobile Number to validate.
-     * @param mix    $network   Telco Identifier.
+     * @param string    $network   Telco Identifier.
      * @param string $separator Seperator for msisdn format.
      *
      * @return array
      */
-    public static function validate($msisdn, $network = false, $separator = '') : array
+    public static function validate($msisdn, $network = '', $separator = '') : array
     {
-        
-        if (true === Msisdn::isNull($msisdn)) {
-            return [
-                'valid' => false,
-                'error' => 'Mobile number cannot be null'
-            ];
-        }
 
         if (true === Msisdn::isEmpty($msisdn)) {
             return [
@@ -282,7 +262,7 @@ class Msisdn
                 'error' => null
             ];
         } else {
-            if ($network === false) {
+            if ($network === '') {
                 return [
                     'valid' => false,
                     'error' => 'Mobile number prefix is not valid',

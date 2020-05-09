@@ -132,14 +132,13 @@ Msisdn::isValidTnT($number) // returns bool (true or false)
 /**
  *
  * Validate does the ff:
- * 1.) it checks if mobile number provided is null using Msisdn::isNull().
- * 2.) it checks if mobile number is empty using Msisdn::isEmpty().
- * 3.) it checks if mobile number if numeric (including some symbols) using Msisdn::isNumber()
- * 4.) it cleans the mobile number using Msisdn::clean().
- * 5.) it validates the length (numbers with prefix should be between 10 to 11).
- * 6.) it loads the prefix using Msisdn::listPrefix().
- * 7.) it checks if prefix with the loaded prefix.
- * 8.) it create an array for response, uses Msisdn::format to format mobile number.
+ * 1.) it checks if mobile number is empty using Msisdn::isEmpty().
+ * 2.) it checks if mobile number if numeric (including some symbols) using Msisdn::isNumber()
+ * 3.) it cleans the mobile number using Msisdn::clean().
+ * 4.) it validates the length (numbers with prefix should be between 10 to 11).
+ * 5.) it loads the prefix using Msisdn::listPrefix().
+ * 6.) it checks if prefix with the loaded prefix.
+ * 7.) it create an array for response, uses Msisdn::format to format mobile number.
  */
 
 // example using valid number.
@@ -240,11 +239,6 @@ Msisdn::removeLeadingZero($number) // returns string
 // Remove country code from mobile number.
 // This function use Msisdn::sanitize($number)
 Msisdn::removeCountryCode($number) // returns string
-```
-#### isNull()
-```php
-// Check if mobile number is null.
-Msisdn::isNull($number) // returns bool (true or false)
 ```
 
 #### isEmpty()
