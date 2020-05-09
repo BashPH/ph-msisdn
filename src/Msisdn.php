@@ -24,7 +24,7 @@ class Msisdn
      *
      * @return array
      */
-    protected static function loadPrefix($network)
+    protected static function loadPrefix($network) : array
     {
         $network = ('' === $network) ? 'all' : strtolower($network);
         $networks = array('all','globe','tm','smart','sun','tnt');
