@@ -78,6 +78,21 @@ final class MsisdnTest extends TestCase
     }
 
     /**
+     * Test telco are equals.
+     */
+    public function testGetTelco()
+    {
+        for ($i=0; $i<count($this->mobile); $i++) {
+            $network = ($i = 3) ? 'Globe/TM' : 'Globe';
+            $network = ($i = 4) ? 'TNT' : 'Globe';
+            $this->assertSame($network, BashPH\Msisdn::getTelco($this->mobile[$i]));
+        }
+        for ($i=0; $i<count($this->mobile); $i++) {
+            $this->assertSame('invalid', BashPH\Msisdn::getTelco($this->errorMobile[$i]));
+        }
+    }
+
+    /**
      * Test prefix are not equal.
      */
     public function testErrorGetPrefix()

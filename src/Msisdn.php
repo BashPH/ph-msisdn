@@ -46,7 +46,7 @@ class Msisdn
      *
      * @return array
      */
-    public static function listPrefix($network) : array
+    public static function listPrefix($network = '') : array
     {
         return Msisdn::loadPrefix($network);
     }
@@ -78,6 +78,28 @@ class Msisdn
             'valid' => true,
             'prefix' => $prefix
         ];
+    }
+
+    /**
+     * Check Telco
+     * Static function to retrieve mobile number carrier.
+     *
+     * @param string $msisdn Mobile number to check.
+     *
+     * @return string
+     */
+    public static function getTelco($msisdn) : string
+    {
+
+        $msisdn = Msisdn::validate($msisdn);
+        if (false === $msisdn['valid']) {
+            return 'invalid';
+        } else {
+            if (null !== $msisdn['carrier']['other']) {
+                return $msisdn['carrier']['network'] . '/' . $msisdn['carrier']['other'];
+            }
+            return $msisdn['carrier']['network'];
+        }
     }
 
     /**

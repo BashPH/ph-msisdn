@@ -1,7 +1,7 @@
 # PH Msisdn
 
 [![Build Status](https://travis-ci.com/BashPH/ph-msisdn.svg?branch=1.x)](https://travis-ci.com/BashPH/ph-msisdn) 
-[![Packagist Version](https://img.shields.io/packagist/v/bashph/ph-msisdn)](https://packagist.org/packages/bashph/ph-msisdn) 
+[![Packagist Version](https://img.shields.io/packagist/v/bashph/ph-msisdn?label=release)](https://packagist.org/packages/bashph/ph-msisdn) 
 [![GitHub](https://img.shields.io/github/license/bashph/ph-msisdn)](https://github.com/BashPH/ph-msisdn/blob/1.x/LICENSE) 
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-blue)](https://packagist.org/packages/bashph/ph-msisdn) 
 
@@ -10,7 +10,7 @@ Simple static PHP validation for Philippine mobile numbers.
 
 ### Features
 
-* Support for latest prefixes (4 digit prefixes, ie: 09173).
+* Support for latest prefixes (4 digit prefixes, ie: 9173).
 * Validate Philippine mobile numbers.
 * Validate by mobile carrier.
 * Format mobile numbers.
@@ -20,9 +20,8 @@ Simple static PHP validation for Philippine mobile numbers.
 
 ### Requirements
 
-* PHP ^5.6 or PHP ^7.0
-* PHP ^7.3 (optional, to run PHPUnit)
-* PHPUnit (optional,to run tests)
+* PHP ^7.3
+* PHPUnit (optional)
 
 ### Installation
 
@@ -284,6 +283,14 @@ Msisdn::clean($number) // returns string
 // This function use Msisdn::clean($number)
 Msisdn::getPrefix($number) // returns array
 ```
+
+#### getTelco()
+```php
+// Get the telco of mobile number
+// This function use Msisdn::validate($number)
+Msisdn::getTelco($number) // returns string
+```
+
 
 #### format()
 ```php
