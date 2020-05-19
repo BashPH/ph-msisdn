@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 /**
  *
  * @category Library
@@ -9,7 +9,7 @@
  * @link     https://github.com/BashPH/ph-msisdn
  */
 
-declare(strict_types=1);
+
 
 namespace BashPH;
 
